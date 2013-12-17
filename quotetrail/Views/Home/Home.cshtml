@@ -1,0 +1,20 @@
+﻿@using System.Web.Mvc.Html
+@using System.Web.Optimization
+@{
+    ViewBag.Title = "Quotes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    <div class="clearfix">
+        <div class="wrapper">
+            <div class="viewquote">
+                @Html.Partial("ViewQuotes")
+            </div>
+            <div class="addquote" id="AddQuote">
+                <div style="top: 20px; position: relative">
+                      @Html.Partial("AddQuote")
+                </div>
+            </div>  
+        </div>
+    </div>
+}
