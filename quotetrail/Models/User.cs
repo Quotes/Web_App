@@ -17,14 +17,14 @@ namespace quotetrail.Models
         [Display(Name = "Remember me")]
         public bool RememberMe { get; set; }
         
-        public bool IsValid(string _username)
+        public bool IsValid(string username)
         {
-            System.IO.DirectoryInfo myDirectory = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
+            var myDirectory = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
             string parentDirectory = myDirectory.Parent.FullName;
             using (var cn = new SQLiteConnection(string.Format(@"Data Source={0}{1} Version=3;", parentDirectory, ConfigurationManager.ConnectionStrings["connectionstring"].ConnectionString))) 
             {
                 string _sql = @"SELECT id FROM Users " + 
-                       "WHERE Name = '"+_username+"';";
+                       "WHERE Name = '"+username+"';";
                 cn.Open();
                 var cmd = new SQLiteCommand(_sql, cn);
                 var reader = cmd.ExecuteReader();

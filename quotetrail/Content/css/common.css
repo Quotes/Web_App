@@ -31,6 +31,7 @@ legend {
     height: 100px;
     width: 100%;
     max-width: 265px;
+    min-width: 260px;
     min-height: 180px;
     max-height: 180px;
 }
@@ -117,14 +118,18 @@ body {
 color: #15c;
 text-decoration: none;
 }
+
+
+
 a:active {
 color: #d14836;
 }
 
 
-button a {
+ a .button{
     font-size: 13px;
     font-weight: normal;
+    text-decoration: none;
 }
 
 .text {
