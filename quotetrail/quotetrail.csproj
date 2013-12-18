@@ -126,6 +126,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\QuotesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -162,8 +163,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Views\Home\Home.cshtml" />
-    <Content Include="Views\Home\AddQuote.cshtml" />
-    <Content Include="Views\Home\ViewQuotes.cshtml" />
+    <Content Include="Views\Quotes\AddQuote.cshtml" />
+    <Content Include="Views\Quotes\ViewQuotes.cshtml" />
+    <Content Include="Views\Quotes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

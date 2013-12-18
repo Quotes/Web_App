@@ -5,7 +5,7 @@
 
 @*method ="POST" action="@Url.Action("AddQuote")" data-quotes-ajax="true" data-quotes-target="#AddQuote"*@
 
-@using (Ajax.BeginForm("AddQuote", "home",new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "AddQuote" }))
+@using (Ajax.BeginForm("AddQuote", "Quotes",new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "AddQuote" }))
 {
 
     if (!Object.ReferenceEquals(null, Model))
@@ -23,7 +23,7 @@
         }
         @Html.Raw("<div id='successmessage'><strong class='text'>" + msg + "</strong><a style='float:right;color:black'  onclick=$('#successmessage').remove()>hide</a></div>")
     }
-       <div style="position: relative; padding-top: 15px; ">
+       <div>
             <strong class="text">Project Name</strong>
             @Html.TextBoxFor(quote => quote.ProjectName,new {@class="roundtextfield"})
             @Html.ValidationMessageFor(quote => quote.ProjectName,string.Empty,new {@class = "errorText"})
