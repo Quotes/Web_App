@@ -9,19 +9,19 @@
     
     </head>
     <body>
-        
-        @if (User.Identity.IsAuthenticated)
-        {
-            <div class ="banner">
+        <div class ="banner">
+            <div>
+                <img src="/Content/images/Capture2.png" alt="failed to load text" style="float:left;padding-top:5px;padding-left:10px; width:170px; height:60px"/> 
+            </div>
+            @if (User.Identity.IsAuthenticated)
+            {
                 <div class="signout">
-@*                    <strong style="text-align: center">Hey, @Html.Encode(User.Identity.Name) </strong>*@
+                    @*                    <strong style="text-align: center">Hey, @Html.Encode(User.Identity.Name) </strong>*@
                     @Html.ActionLink("Sign Out", "Logout", "Home",new {@class = "button"})
                 </div>
-            </div>
-        }
- 
+            }
+        </div>
         @RenderBody()
- 
         @Scripts.Render("~/bundles/quotes")
         @Scripts.Render("~/bundles/jquery-unobtrusive")
         @RenderSection("scripts", required: false)
