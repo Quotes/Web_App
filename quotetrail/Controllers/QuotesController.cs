@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
+using quotetrail.Service;
 
 namespace quotetrail.Controllers
 {
@@ -20,25 +18,26 @@ namespace quotetrail.Controllers
         [HttpPost]
         public ActionResult AddQuote(Models.Quote quote)
         {
+            var quotesservices = new QuotesService();
             quote.User = User.Identity.Name;
-            quote.Status = quote.AddQuote() ? "added" : "failed";
+            quote = quotesservices.AddQuote(quote);
             return PartialView("AddQuote", quote);
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
         public JsonResult GetProjects()
         {
-            var projectsList = new List<string> { "Abcam", "Pam", "Blue Label", "sathyam" };
-            var x = Json(projectsList);
-            return x;
+            var quotesservices = new QuotesService();
+            var projectsList = quotesservices.GetProjects();
+            return Json(projectsList); ;
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
         public JsonResult GetQuotes(string project)
         {
-            var x =
-                @" {""quotes"":[{""quote"": ""quote1 asd a sda sd as d a sda s dasd a sdasdasd asd"",""quoted_by"": ""JOHN"",""date"": ""13-JAN-2011""},{""quote"": ""sadasd a s asd asd a sd a sd a  sdada d a sd"",""quoted_by"": ""JOHN"",""date"": ""13-JAN-2011""},{""quote"": ""quote1 asd a sda sd as d a sda s dasd a sdasdasd asd"",""quoted_by"": ""JOHN"",""date"": ""13-JAN-2011""},{""quote"": ""sadasd a s asd asd a sd a sd a  sdada d a sd"",""quoted_by"": ""JOHN"",""date"": ""13-JAN-2011""}]}";
-            return Json(x);
+             var quotesservices = new QuotesService();
+             var quotes = quotesservices.GetQuotes(project);
+            return Json(quotes);
 
         }
     }
