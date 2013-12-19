@@ -32,6 +32,13 @@ $(function () {
     });
 });
 
+function clearAddQuoteForm() {
+    $('#form0').find("input, textarea").each(function() {
+        $(this).val("");
+    });
+    $('#form0').find("input[type='submit']").val("Add Quote");
+}
+
 
 
 

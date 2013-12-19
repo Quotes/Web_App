@@ -14,8 +14,7 @@
         if (Model.Status.Equals("added"))
         {
             msg = "Added successfully.";
-            <script> clearForm(""); </script>
-
+            <script> clearAddQuoteForm() </script>
         }
         else
         {
@@ -25,18 +24,18 @@
     }
        <div>
             <strong class="text">Project Name</strong>
-            @Html.TextBoxFor(quote => quote.ProjectName,new {@class="roundtextfield"})
-            @Html.ValidationMessageFor(quote => quote.ProjectName,string.Empty,new {@class = "errorText"})
+            @Html.TextBoxFor(quote => quote.ProjectName, new { @class = "roundtextfield" })
+            @Html.ValidationMessageFor(quote => quote.ProjectName, string.Empty, new { @class = "errorText" })
         </div>
         <div>
             <strong class="text">Quote By</strong>
-            @Html.TextBoxFor(quote => quote.QuoteBy,new {@class = "roundtextfield"})
-            @Html.ValidationMessageFor(quote => quote.QuoteBy,string.Empty,new {@class = "errorText"})
+            @Html.TextBoxFor(quote => quote.QuoteBy, new { @class = "roundtextfield" })
+            @Html.ValidationMessageFor(quote => quote.QuoteBy, string.Empty, new { @class = "errorText" })
         </div>
         <div>
             <strong class ="text"> Quote</strong>
             @Html.TextAreaFor(quote => quote.Quotestring, new { @class = "roundtextfield" })
-            @Html.ValidationMessageFor(quote => quote.Quotestring,string.Empty,new {@class = "errorText"})
+            @Html.ValidationMessageFor(quote => quote.Quotestring, string.Empty, new { @class = "errorText" })
         </div>
 
         <div style="padding-top: 10px;">
