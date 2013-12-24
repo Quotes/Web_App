@@ -2,26 +2,31 @@
 @using quotetrail.Models
 @model quotetrail.Models.Quote
 
-
-@*method ="POST" action="@Url.Action("AddQuote")" data-quotes-ajax="true" data-quotes-target="#AddQuote"*@
-
-@using (Ajax.BeginForm("AddQuote", "Quotes",new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "AddQuote" }))
+ 
+@using (Ajax.BeginForm("AddQuote", "Quotes", new AjaxOptions {  OnSuccess = "completed", OnFailure = "completed" }))
 {
 
-    if (!Object.ReferenceEquals(null, Model))
+    if (!Object.ReferenceEquals(null, Model) && Model.IsValid)
     {
+        Model.IsValid = false;
         var msg = "";
         if (Model.Status.Equals("added"))
         {
             msg = "Added successfully.";
             <script> clearAddQuoteForm() </script>
+            
         }
         else
         {
             msg = "Oops!! This is embrassing, failed to add the Quote please try again.";
         }
-        @Html.Raw("<div id='successmessage'><strong class='text'>" + msg + "</strong><a style='float:right;color:black'  onclick=$('#successmessage').remove()>hide</a></div>")
+        @Html.Raw("<div id='successmessage'><strong class='text'>" + msg + ViewData.ModelState.IsValid+ "</strong><a style='float:right;color:black'  onclick=$('#successmessage').remove()>hide</a></div>")
     }
+       
+    <div id="result" class ='clearfix' style="height: 20px;width: 100%; border: 2px black;">
+        
+    </div>
+    
        <div>
             <strong class="text">Project Name</strong>
             @Html.TextBoxFor(quote => quote.ProjectName, new { @class = "roundtextfield" })

@@ -86,7 +86,7 @@ input {
     /*position: static;*/
     left: 50px;
     width: 1000px;
-    min-height: 600px;
+    height: 800px;
     border: 1px solid black;
     color: #fafafa;
 }
@@ -152,6 +152,12 @@ color: #d14836;
     display: inline-block;
 }
 
+
+.contentofquote {
+    width: 100%;
+    overflow: auto;
+    height: 700px;
+}
 
 .wrapper {
       top: 60px;

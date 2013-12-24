@@ -16,12 +16,15 @@ namespace quotetrail.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult AddQuote(Models.Quote quote)
+        public JsonResult AddQuote(Models.Quote quote)
         {
+            if (!quote.IsValid)
+            {
             var quotesservices = new QuotesService();
             quote.User = User.Identity.Name;
-            quote = quotesservices.AddQuote(quote);
-            return PartialView("AddQuote", quote);
+            return Json(quotesservices.AddQuote(quote));
+            }
+            return Json(false);
         }
 
         [AcceptVerbs(HttpVerbs.Post)]

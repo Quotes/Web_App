@@ -5,7 +5,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     <link href="~/Content/css/common.css" rel="stylesheet" />
 }
-
+@Html.AntiForgeryToken();
+@Html.ValidationSummary(true);
 @using (Html.BeginForm())
 {
     

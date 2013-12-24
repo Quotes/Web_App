@@ -29,6 +29,8 @@ namespace quotetrail.Models
 
         public string Status { get; set; }
 
+        public bool IsValid { get; set; }
+
 
 
         public bool AddQuote()

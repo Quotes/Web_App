@@ -21,9 +21,12 @@ $(function () {
     $("#projects").change(function (e) {
         $.post("/Quotes/GetQuotes", $("#projects :selected").val(), function (data) {
             var json = $.parseJSON(data);
+            // TODO: have to get scroll bar for the table.
+//            var strinnerhtml = "";
             var strinnerhtml = "<table style='width:100%'>";
             $.each(json.quotes,function (key,val) {
-                strinnerhtml = strinnerhtml + "<tr><td>" + val.quote + "&nbsp-&nbsp" + val.quoted_by + "</td></tr>";
+                  strinnerhtml = strinnerhtml + "<tr><td>" + val.quote + "&nbsp-&nbsp" + val.quoted_by + "</td></tr>";
+//                strinnerhtml = strinnerhtml + "<div>" + val.quote + "</div>";
             });
             strinnerhtml = strinnerhtml + "</table>";
             $("#contentofquote").html(strinnerhtml);
@@ -39,6 +42,18 @@ function clearAddQuoteForm() {
     $('#form0').find("input[type='submit']").val("Add Quote");
 }
 
+function completed(data) {
+    $("#result").empty();
+    if (data == false) {
+        $("#result").append("<div><div style='float:left'><strong class='text'>Failed to Add Quote.</strong></div><div class='text' style='float:right' onclick='hide()'> hide</div></div>");
+    } else {
+        $("#result").append("<div style='color=black'>Quote Added.</div><div onclick='hide()'> hide</div>");
+    }
+}
+
+function hide() {
+    $("#result").empty();
+}
 
 
 
