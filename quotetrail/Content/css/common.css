@@ -87,7 +87,7 @@ input {
     left: 50px;
     width: 1000px;
     height: 800px;
-    border: 1px solid black;
+    border: 1px solid #808080;
     color: #fafafa;
 }
 
@@ -152,10 +152,13 @@ color: #d14836;
     display: inline-block;
 }
 
+.container {
+    width: 100%;
+    overflow: auto;
+}
 
 .contentofquote {
     width: 100%;
-    overflow: auto;
     height: 700px;
 }
 
