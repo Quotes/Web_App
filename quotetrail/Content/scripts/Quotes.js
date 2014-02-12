@@ -17,16 +17,24 @@ $(function () {
         }
     });
 
+//    $("#projects").MOUSEOVER(function(e) {
+//        $("#dropdownloader").attr('data-update', "true");
+//    });
+//
+//    $("#projects").onclick(function(e) {
+//        $("#dropdownloader").attr('data-update', "true");
+//    });
+//    
+    
+
     // to udpate the Quotes display in UI
     $("#projects").change(function (e) {
         $.post("/Quotes/GetQuotes", $("#projects :selected").val(), function (data) {
             var json = $.parseJSON(data);
             // TODO: have to get scroll bar for the table.
-//            var strinnerhtml = "";
             var strinnerhtml = "<table style='width:100%'>";
             $.each(json.quotes,function (key,val) {
                   strinnerhtml = strinnerhtml + "<tr><td>" + val.quote + "&nbsp-&nbsp" + val.quoted_by + "</td></tr>";
-//                strinnerhtml = strinnerhtml + "<div>" + val.quote + "</div>";
             });
             strinnerhtml = strinnerhtml + "</table>";
             $("#contentofquote").html(strinnerhtml);
